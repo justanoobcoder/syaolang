@@ -28,6 +28,20 @@ function getData() {
         });
 }
 
+function previousWord(length, index) {
+    --index.value;
+    if (index.value < 0) {
+        index.value = length - 1;
+    }
+}
+
+function nextWord(length, index) {
+    ++index.value;
+    if (index.value == length) {
+        index.value = 0;
+    }
+}
+
 async function typePractice() {
     const list = await getData();
     const length = list.length;
@@ -39,16 +53,25 @@ async function typePractice() {
             let userAnswer = document.getElementById('user-answer').value;
             if (! userAnswer) {
                 response = 'Please type something!'
-                --index.value;
             } else if (words.includes(userAnswer)) {
                 response = 'Your answer is correct!';
+                nextWord(length, index);
             } else {
                 let rightAnswer = words.join('<span style="color: var(--black-color);"> or </span>');
                 response = `<span class="wrong-answer">${userAnswer}</span> is wrong \
                 answer!<br>The answer is <span class="right-answer">${rightAnswer}</span>`;
+                nextWord(length, index);
             }
             words = render(list, length, index, response);
         }
+    });
+    document.getElementById('go-left').addEventListener('click', () => {
+        previousWord(length, index);
+        words = render(list, length, index);
+    });
+    document.getElementById('go-right').addEventListener('click', () => {
+        nextWord(length, index);
+        words = render(list, length, index);
     });
 }
 
@@ -57,14 +80,17 @@ function render(list, length, index, response) {
         document.getElementById('response').innerHTML = response;
     }
     document.getElementById('user-answer').value = null;
-    //let index = Math.floor(Math.random() * length);
-    let i = index.value++ == length - 1 ? 0 : index.value - 1;
+    let i = index.value;
     let words = list[i].word;
     let meaning = list[i].meaning;
+    const progressElement = document.getElementsByClassName('card__progress')[0];
+    progressElement.max = length;
+    progressElement.value = i;
+    document.getElementById('count').innerHTML = `${i + 1}/${length}`
     document.getElementById('vocab-question').innerHTML = meaning;
     document.getElementById('vocab-type-ipa').innerHTML = `${list[i].type} ${list[i].ipa}`;
     document.getElementsByClassName('card__question')[0]
-        .style.backgroundImage = `url('${list[i].image}')`
+        .style.backgroundImage = `url('${list[i].image}')`;
     return words.split('/');
 }
 
