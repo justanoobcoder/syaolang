@@ -40,7 +40,7 @@ async function typePractice() {
             if (! userAnswer) {
                 response = 'Please type something!'
                 --index.value;
-            } else if (words.slice('/').includes(userAnswer)) {
+            } else if (words.split('/').includes(userAnswer)) {
                 response = 'Your answer is correct!';
             } else {
                 response = `<span class="wrong-answer">${userAnswer}</span> is wrong \
