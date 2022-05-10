@@ -1,0 +1,17 @@
+:root {
+  --text-color: #333;
+  --white-color: #fff;
+  --black-color: #000;
+  --red-color: #a10000;
+  --green-color: #1bff1b;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  font-family: 'Roboto';
+}

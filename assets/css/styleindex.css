@@ -1,0 +1,85 @@
+body {
+  background-image: url('../images/study-day.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 35em;
+  height: 50em;
+  background: #00B4DB;
+  background: -webkit-linear-gradient(-45deg, rgb(0 98 122), rgb(255 237 16));
+  background: linear-gradient(-45deg, rgb(0 98 122), rgb(255 237 16));
+  display: grid;
+  grid-template-rows: 70% auto auto;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.card__question {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  margin: 5em 1em 1em;
+  /* background-image: url('https://cdn-prod.voxy.com/wp-content/uploads/2012/10/school-1.jpg'); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.vocab {
+  background-color: rgba(0, 0, 0, 0.705);
+  height: 10em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.vocab > div {
+  color: var(--white-color);
+}
+
+#vocab-question {
+  font-size: 2.5em;
+  line-height: 3rem;
+}
+
+#vocab-type-ipa {
+  font-style: italic;
+  font-size: 2em;
+}
+
+.card__input {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 2em;
+  height: 4rem;
+  padding-inline: 0.8rem;
+  text-align: center;
+  margin-top: 1rem;
+  border-radius: 5px;
+  outline: none;
+}
+
+.card__response {
+  font-size: 2em;
+  padding-inline: 1rem;
+}
+
+.right-answer {
+  color: var(--green-color);
+}
+
+.wrong-answer {
+  color: var(--red-color);
+}
