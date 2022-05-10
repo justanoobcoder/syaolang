@@ -52,8 +52,7 @@ function render(list, length, response) {
         document.getElementById('response').innerHTML = response;
     }
     document.getElementById('user-answer').value = null;
-    //let index = Math.floor(Math.random() * length);
-    let index = list.length - 1;
+    let index = Math.floor(Math.random() * length);
     let words = list[index].word;
     let meaning = list[index].meaning;
     document.getElementById('vocab-question').innerHTML = meaning;
@@ -61,7 +60,5 @@ function render(list, length, response) {
     document.getElementsByClassName('card__question')[0].style.backgroundImage = `url('${list[index].image}')`
     return words;
 }
-
-//window.addEventListener('DOMContentLoaded', typePractice);
 
 typePractice()
