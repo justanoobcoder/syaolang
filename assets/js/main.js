@@ -40,11 +40,12 @@ async function typePractice() {
             if (! userAnswer) {
                 response = 'Please type something!'
                 --index.value;
-            } else if (words.split('/').includes(userAnswer)) {
+            } else if (words.includes(userAnswer)) {
                 response = 'Your answer is correct!';
             } else {
+                let rightAnswer = words.join('<span style="color: var(--black-color);"> or </span>');
                 response = `<span class="wrong-answer">${userAnswer}</span> is wrong \
-                answer!<br>The answer is <span class="right-answer">${words}</span>`;
+                answer!<br>The answer is <span class="right-answer">${rightAnswer}</span>`;
             }
             words = render(list, length, index, response);
         }
@@ -64,7 +65,7 @@ function render(list, length, index, response) {
     document.getElementById('vocab-type-ipa').innerHTML = `${list[i].type} ${list[i].ipa}`;
     document.getElementsByClassName('card__question')[0]
         .style.backgroundImage = `url('${list[i].image}')`
-    return words;
+    return words.split('/');
 }
 
 typePractice()
